@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class UserCart extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,14 @@ class User extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'user_id',
     ];
 
     /**
      * Связи
      */
-    public function UserCart()
+    public function user()
     {
-        return $this->hasOne(UserCart::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\UserCart;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -14,7 +15,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()
+        $users = User::factory()
+            ->has(UserCart::factory())
             ->count(10)
             ->create();
     }
