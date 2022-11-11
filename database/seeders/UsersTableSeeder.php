@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $whom_to = array();
         $users = User::factory()
             ->has(
                 UserCart::factory()
@@ -26,5 +27,22 @@ class UsersTableSeeder extends Seeder
             )
             ->count(10)
             ->create();
+
+        // распределяем подопечных
+        $users_count = $users->count();
+        $i = 1;
+        foreach ($users as $user){
+            $find = false;
+            while (!$find || ($users_count == $i && ($users_count/2 != ceil($users_count/2)))){
+                $tmp_id = User::all()->random()->id;
+                if(!in_array($tmp_id, $whom_to) && $tmp_id!=$user->id){
+                    $whom_to[] = $tmp_id;
+                    $user->whom_to_give = $tmp_id;
+                    $user->save();
+                    $find = true;
+                }
+            }
+            $i++;
+        }
     }
 }

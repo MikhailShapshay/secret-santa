@@ -25,4 +25,9 @@ class User extends Model
     {
         return $this->hasOne(UserCart::class, 'user_id');
     }
+
+    public function WhomToGive()
+    {
+        return $this->hasOne(User::class, 'id', 'whom_to_give');
+    }
 }
