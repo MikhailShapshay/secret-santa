@@ -21,6 +21,17 @@ window.Vue = require('vue').default;
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+import DataTable from "@andresouzaabreu/vue-data-table";
+//import "bootstrap/dist/css/bootstrap.min.css";
+import "@andresouzaabreu/vue-data-table/dist/DataTable.css";
+
+Vue.config.productionTip = false;
+
+Vue.component("data-table", DataTable);
+
+Vue.component('santa-form', require('./components/SantaForm.vue').default);
+Vue.component('santa-table', require('./components/SantaTable.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
