@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserFactory extends Factory
+class OrderFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +15,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->name(),
+            'order_item_id' => OrderItem::all()->random()->id,
         ];
     }
 }

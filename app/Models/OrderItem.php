@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserCart extends Model
+class OrderItem extends Model
 {
     use HasFactory;
 
@@ -15,19 +15,11 @@ class UserCart extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
+        'name',
     ];
-
-    /**
-     * Связи
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'user_cart_id', 'id');
+        return $this->hasMany(Order::class, 'order_item_id', 'id');
     }
 }
