@@ -1,4 +1,11 @@
 <p align="center"><h1>Тайный Санта</h1></p>
+<p align="center"><h2>Laravel 8, PostgreSql, VueJS</h2></p>
+<p align="justify"><strong>ствновка</strong></p>
+<p align="justify">
+composer install<br/>
+npm install<br/>
+npm run prod
+</p>
 <p align="justify"><strong>PostgreSql</strong></p>
 <p align="justify">Есть таблица users, user_carts, orders, order_items</p>
 
