@@ -23,6 +23,7 @@
             handleAction(actionName) {
                 axios.delete('/api/users/'+this.data.id)
                     .then(res => {
+                        console.log(res);
                         window.location.reload();
                     })
             }

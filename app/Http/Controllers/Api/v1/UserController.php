@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use function Ramsey\Uuid\Lazy\toString;
 
 class UserController extends Controller
 {
@@ -47,7 +48,21 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', '=', $id)
+            ->with('WhomToGive',
+                'UserCart',
+                'UserCart.orders',
+                'UserCart.orders.order_items',
+                'WhomToGive.UserCart',
+                'WhomToGive.UserCart.orders',
+                'WhomToGive.UserCart.orders.order_items')
+            ->first();
+        if ($user != null) {
+            return $user;
+        }
+        else{
+            return response('Сотрулник с таким ID енайден !');
+        }
     }
 
     /**
@@ -80,8 +95,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-
-        return response('/api/orders');
+        if ($user != null) {
+            $user->delete();
+            return response('OK');
+        }
+        else{
+            return response('Сотрулник с таким ID енайден !');
+        }
     }
 }

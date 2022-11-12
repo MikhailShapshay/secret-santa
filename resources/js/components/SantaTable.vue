@@ -19,7 +19,7 @@
                     data: this.tbl_data,
                     columns: [
                         { key: "id",
-                          title: "id"
+                          title: "UserId"
                         },
                         {
                             key: "name",
