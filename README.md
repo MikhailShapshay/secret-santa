@@ -1,6 +1,6 @@
 <p align="center"><h1>Тайный Санта</h1></p>
 <p align="center"><h2>Laravel 8, PostgreSql, VueJS</h2></p>
-<p align="justify"><strong>ствновка</strong></p>
+<p align="justify"><strong>Уствновка</strong></p>
 <p align="justify">
 composer install<br/>
 npm install<br/>
